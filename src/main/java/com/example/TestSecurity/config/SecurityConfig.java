@@ -23,6 +23,15 @@ public class SecurityConfig {
                         // .authenticated() 로그인 된 사용자만 접근가능
                         .anyRequest().authenticated()
                 );
+        
+        http
+                .formLogin((auth) -> auth.loginPage("/login")
+                        .loginProcessingUrl("/loginProc")
+                        .permitAll()
+                );
+
+        http
+                .csrf((auth) -> auth.disable());
 
         return http.build();
     }
