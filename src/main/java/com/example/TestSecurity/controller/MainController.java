@@ -1,6 +1,5 @@
 package com.example.TestSecurity.controller;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
