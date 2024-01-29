@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         //경로에 접근제한 설정
                         //상당부터 접급제한 설정됨. 순서 유의할 것.
-                        .requestMatchers("/", "/login").permitAll()
+                        .requestMatchers("/", "/login","/join","/joinProc").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")
                         // .authenticated() 로그인 된 사용자만 접근가능
