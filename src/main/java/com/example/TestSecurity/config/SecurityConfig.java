@@ -37,8 +37,22 @@ public class SecurityConfig {
                         .permitAll()
                 );
 
+        // http
+        //         .csrf((auth) -> auth.disable());
+
         http
-                .csrf((auth) -> auth.disable());
+                .sessionManagement((auth) -> auth
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true));
+        
+        http
+                .sessionManagement((auth) ->  auth
+                        .sessionFixation().changeSessionId());
+        
+        // 로그아웃 설정
+        http
+                .logout((auth) -> auth.logoutUrl("/logout")
+                        .logoutSuccessUrl("/"))
 
         return http.build();
     }
